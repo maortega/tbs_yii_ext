@@ -1,0 +1,72 @@
+/*
+
+By MarkSoft Solutions June 8th 2012.
+
+*/
+
+
+
+How to Install Yii TBS Extension
+__________________________
+
+
+Step1.
+Copy 'tbs_us' folder inside your project folder protected/extensions/
+
+Step2.
+Modify your protected/config/main.php file and add the following line:
+
+'components'=>array(
+….
+'viewRenderer' => array(
+  		'class' => 'ext.tbs_us.TBSViewRenderer'
+		),
+…
+);
+
+Step3.
+Use it, create a new controller and an action, put the following code for testing:
+$this->render('tbs',array('username' => 'Marco'));
+
+Step4.
+Create an html file for the view an place the following code:
+Hello, [var.data.username]!
+
+
+--------OPTIONAL (Block test) --------------
+You can optionally test the block feature.
+
+Just create a member variable into your controller called blocks:
+public $blocks;
+
+Now inside your action function fill it out as follows:
+
+$this->blocks[] = array('name' => 'myBlock' , 'values' => array(
+		
+		array('title' =>'quelque chose'),
+		array('title' =>'asdasg'),
+		array('title' =>'sdfasdg')
+		
+		)
+		
+		);
+
+Then render your view:
+		$this->render('tbs',array('username' => 'Marco'));
+
+Edit your html view fill to look like this:
+Hello, [var.data.username]!
+
+<div>
+[myBlock.title;block=div]
+</div>
+
+/************
+
+Please refer to the http://www.tinybutstrong.com site for reference on how to use this powerful template engine.
+
+You can reach me at maortega@hotmail.com
+http://www.marksoftsolutions.com
+
+************/
+
